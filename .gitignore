@@ -1,0 +1,14 @@
+
+.vs/
+
+Temp/
+
+Library/
+
+obj/
+
+Logs/
+
+bin/
+
+AssemblyInfo.cs

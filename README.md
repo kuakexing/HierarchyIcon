@@ -1,0 +1,2 @@
+# HierarchyIcon
+ UnityEditorToolForHierarchy
