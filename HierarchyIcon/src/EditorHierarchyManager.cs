@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 namespace KuFramework.EditorTools
 {
@@ -6,41 +7,36 @@ namespace KuFramework.EditorTools
     public class EditorHierarchyManager
     {
         private static IEditorHierarchyTool mEditorHierarchyStrengthen;
-        private static bool mToolSwitch;
+        /// <summary>
+        /// 虽然是静态构造方法，但是每次运行时都会调用一次
+        /// </summary>
         static EditorHierarchyManager()
         {
             //EditorApplication.update += Update;
             mEditorHierarchyStrengthen = new EditorHierarchyTool();
-            InitSwitch();
-            AddMethod();
+            AddMethod(!EditorPrefs.GetBool("mToolSwitch"));
         }
 
         [MenuItem("GameObject/Tools/HierarchyStrengthen/Switch",false,1)]
         private static void HierarchyToolSwitch()
         {
-            if(mToolSwitch)
-            {
-                RemoveMethod();
-            }
-            else
-            {
-                AddMethod();
-            }
-            mToolSwitch = !mToolSwitch;
+            EditorPrefs.SetBool("mToolSwitch", !AddMethod(EditorPrefs.GetBool("mToolSwitch")));
             EditorUtility.DisplayDialog("Tips","\n\tPlease wait for a moment\n\tWait for Editor GUI update...","ok");
         }
         private static void InitSwitch()
         {
-            mToolSwitch = true;
+            EditorPrefs.SetBool("mToolSwitch",true);
         }
-        private static void AddMethod()
+        private static bool AddMethod(bool isOn)
         {
-            RemoveMethod();
-            EditorApplication.hierarchyWindowItemOnGUI += DrawHierarchyIcon;
-        }
-        private static void RemoveMethod()
-        {
-            EditorApplication.hierarchyWindowItemOnGUI -= DrawHierarchyIcon;
+            if(isOn)
+                EditorApplication.hierarchyWindowItemOnGUI -= DrawHierarchyIcon;
+            else
+            {
+                EditorApplication.hierarchyWindowItemOnGUI -= DrawHierarchyIcon;
+                EditorApplication.hierarchyWindowItemOnGUI += DrawHierarchyIcon;
+            }
+            return isOn;
         }
         private static void DrawHierarchyIcon(int instanceId, Rect selectionRect) => mEditorHierarchyStrengthen.ShowHierarchyIcon(instanceId, selectionRect);
 

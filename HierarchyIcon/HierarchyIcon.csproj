@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0B973A07-4E55-42CB-8919-37A0F51E0233}</ProjectGuid>
+    <ProjectGuid>{ED478ED3-7E80-42AF-B9F6-FBA892D9CE97}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HierarchyIcon</RootNamespace>
@@ -48,6 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\ComponentNameData.cs" />
+    <Compile Include="src\EditorHierarchyManager.cs" />
+    <Compile Include="src\EditorHierarchyTool.cs" />
+    <Compile Include="src\IEditorHierarchyTool.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

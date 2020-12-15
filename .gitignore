@@ -12,3 +12,5 @@ Logs/
 bin/
 
 AssemblyInfo.cs
+
+*.csproj

@@ -13,6 +13,8 @@ public class ComponentNameData
         "Button",
         "ScrollRect",
         "ScrollBar",
+        "Toggle",
+        "ToggleGroup",
         "Dropdown",
         "Slider",
         "Mask",
@@ -85,11 +87,13 @@ public class ComponentNameData
         "SpriteRenderer",
         "Light",
         "Camera",
+        "OcclusionArea",
         //"CanvasRenderer",
 	#endregion
 
 	#region video
         "VideoPlayer",
+        //"MonoBehaviour",
 	#endregion
 	#region event
         "EventSystem"
